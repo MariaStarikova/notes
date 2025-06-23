@@ -1,0 +1,27 @@
+.form {
+  @extend %flex-columns;
+}
+
+.form__signin {
+  @extend %flex-columns;
+}
+
+.form__title {
+  margin: 0 0 70px;
+}
+
+.signup__title {
+  margin: 70px auto 30px;
+}
+
+.form__button {
+  margin-top: 20px;
+  background-color: #000;
+  border: solid #000 1px;
+  color: #fff;
+}
+
+.form__button:hover {
+  color: #f1f3f5;
+  border: solid #f1f3f5 1px;
+}

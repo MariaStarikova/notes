@@ -1,0 +1,103 @@
+.input__container {
+  align-self: center;
+  @extend %flex-columns;
+  margin-bottom: 10px;
+}
+
+.input__title {
+  @extend %title-form;
+}
+
+.input__description {
+  @extend %input-description;
+}
+
+.input {
+  @include input-border-default();
+}
+
+.default {
+  @include input-border-default();
+}
+
+.filled {
+  @include input-border-filled();
+}
+
+.unstyled {
+  @include input-border-unstyled();
+}
+
+.input__error {
+  color: #fa5252;
+  font-size: 10px;
+  margin: 0 auto 0 0;
+}
+
+.input__white {
+  color: transparent;
+  font-size: 10px;
+  margin: 0 auto 0 0;
+}
+
+.error {
+  border: solid #fa5252 1px;
+}
+
+.gender-select {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 15px;
+}
+
+.gender-option {
+  position: relative;
+  padding-left: 22px;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+  color: #444;
+}
+
+.gender-option input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.gender-option::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid #ccc;
+  background-color: white;
+  transition: border-color 0.2s ease;
+}
+
+.gender-option.selected::before {
+  border-color: #4a90e2;
+}
+
+.gender-option::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  box-sizing: border-box;
+}
+
+.gender-option.selected::after {
+  opacity: 1;
+}
