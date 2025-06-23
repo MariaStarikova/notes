@@ -1,0 +1,49 @@
+@mixin input-focus-style($border-color: #228be6) {
+  &:focus {
+    outline: none;
+    border-color: $border-color;
+    transition: border-color 0.2s ease;
+  }
+}
+
+@mixin input-border-default() {
+  color: #000;
+  border: solid #ced4da 1px;
+  border-radius: 3px;
+  padding: 3px;
+  align-self: flex-start;
+  background-color: #fff;
+
+  &::placeholder {
+    @extend %placeholder;
+  }
+
+  @include input-focus-style();
+}
+
+@mixin input-border-filled() {
+  border: solid #f1f3f5 1px;
+  border-radius: 3px;
+  background-color: #f1f3f5;
+  padding: 3px;
+
+  &::placeholder {
+    @extend %placeholder;
+  }
+
+  @include input-focus-style();
+}
+
+@mixin input-border-unstyled() {
+  border: solid transparent 1px;
+  padding: 3px;
+
+  &::placeholder {
+    @extend %placeholder;
+  }
+
+  &:focus {
+    outline: none;
+    border: solid transparent 1px;
+  }
+}
