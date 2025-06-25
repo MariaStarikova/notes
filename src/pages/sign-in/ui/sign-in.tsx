@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form, type FormField } from '@/shared/ui/form';
 import type { ValidationRules } from '@/shared/lib/hooks/useFormValidation';
 import { useAuth } from '@/app/auth/context/auth-context';
-// import './Signin.scss';
+import './sign-in.scss';
 
 const mockSigninInputs: FormField[] = [
   {

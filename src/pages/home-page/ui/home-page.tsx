@@ -1,3 +1,9 @@
+import { Sidebar } from '@/widgets/sidebar';
+
 export function HomePage() {
-  return <h1>Home page</h1>;
+  return (
+    <div className="home-page">
+      <Sidebar />
+    </div>
+  );
 }

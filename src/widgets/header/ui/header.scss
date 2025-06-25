@@ -1,0 +1,29 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  @extend %flex-rows;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+  //   outline: 1px solid red;
+}
+
+.header__title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header__user {
+  @extend %flex-rows;
+  position: absolute;
+  right: 30px;
+}
+
+.header__email {
+}
+
+.header__out-button {
+  background-color: #fff;
+}
