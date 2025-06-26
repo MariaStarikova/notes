@@ -4,8 +4,12 @@ import type { Note } from '@/entities/note/model/note-type';
 
 const notesCollection = collection(db, 'notes');
 
-export const addNote = async (note: Omit<Note, 'id'>): Promise<void> => {
-  await addDoc(notesCollection, note);
+export const addNote = async (note: Omit<Note, 'id'>): Promise<Note> => {
+  const docRef = await addDoc(notesCollection, note);
+  return {
+    id: docRef.id,
+    ...note
+  };
 };
 
 export const getAllNotes = async (): Promise<Note[]> => {
