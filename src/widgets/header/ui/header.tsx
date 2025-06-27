@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import { AuthStatus } from '@/features/auth-status';
 import './header.scss';
 
 export function Header() {
@@ -7,12 +8,7 @@ export function Header() {
   return (
     <header className="header">
       <h1 className="header__title">Notes</h1>
-      {!isLoginPage && (
-        <div className="header__user">
-          <p className="header__email">m@gmail.com</p>
-          <button className="header__out-button">Выйти</button>
-        </div>
-      )}
+      {!isLoginPage && <AuthStatus />}
     </header>
   );
 }

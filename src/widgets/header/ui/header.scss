@@ -14,16 +14,3 @@
   font-size: 25px;
   font-weight: bold;
 }
-
-.header__user {
-  @extend %flex-rows;
-  position: absolute;
-  right: 30px;
-}
-
-.header__email {
-}
-
-.header__out-button {
-  background-color: #fff;
-}

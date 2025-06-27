@@ -72,6 +72,7 @@ export function Form({
   return (
     <form className={`form ${className}`} onSubmit={handleSubmit} noValidate>
       <h1 className={`form__title ${getClassForm()}`}>{title}</h1>
+      <p className="form__subtitle">(Введите любые валидные почту и пароль)</p>
       {fields.map((field, index) => (
         <Input key={index} {...field} error={errors[field.name]} />
       ))}

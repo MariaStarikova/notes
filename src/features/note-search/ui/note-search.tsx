@@ -21,7 +21,7 @@ export function NoteSearch(props: NoteSearchProps) {
         type="search"
         variant="outlined"
         color="primary"
-        sx={{ width: '93%' }}
+        sx={{ width: '100%' }}
         value={textValue}
         onChange={e => onChange(e.target.value)}
       />
