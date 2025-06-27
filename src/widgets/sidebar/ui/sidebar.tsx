@@ -3,9 +3,22 @@ import './sidebar.scss';
 import { NoteSearch } from '@/features/note-search';
 import { useEffect, useState } from 'react';
 import type { Note } from '@/entities/note/model/note-type';
-import { getAllNotes, deleteNote, updateNote } from '@/entities/note/api/note-api';
+import { getAllNotes, deleteNote } from '@/entities/note/api/note-api';
+import Button from '@mui/material/Button';
 
-export function Sidebar() {
+interface SidebarProps {
+  onNoteSelect: (note: Note | null, shouldFocus?: boolean) => void;
+  selectedNote: Note | null;
+  onCreateNote: () => void;
+  refreshTrigger?: number;
+}
+
+export function Sidebar({
+  onNoteSelect,
+  selectedNote,
+  onCreateNote,
+  refreshTrigger
+}: SidebarProps) {
   const [notes, setNotes] = useState<Note[]>([]);
   const [filteredNotes, setFilteredNotes] = useState<Note[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,19 +37,11 @@ export function Sidebar() {
     }
   };
 
-  const handleUpdate = async (id: string) => {
-    const newContent = prompt('Введите новый текст:');
-    if (!newContent) return;
-
-    try {
-      await updateNote(id, newContent);
-      setNotes(prev =>
-        prev.map(note => (note.id === id ? { ...note, content: newContent } : note))
-      );
-    } catch (error) {
-      console.error('Ошибка при обновлении:', error);
+  useEffect(() => {
+    if (selectedNote) {
+      setNotes(prev => prev.map(note => (note.id === selectedNote.id ? selectedNote : note)));
     }
-  };
+  }, [selectedNote]);
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -52,7 +57,7 @@ export function Sidebar() {
     };
 
     fetchNotes();
-  }, []);
+  }, [refreshTrigger]);
 
   useEffect(() => {
     const lower = textValue.toLowerCase();
@@ -62,11 +67,48 @@ export function Sidebar() {
   return (
     <div className="sidebar">
       <NoteSearch textValue={textValue} onChange={handleSearch} />
+      <div className="sidebar__buttons">
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => onNoteSelect(null)}
+          size="small"
+          disableElevation
+          sx={{
+            fontSize: '0.625rem',
+            padding: '1px 5px',
+            minHeight: '22px',
+            minWidth: 'auto',
+            lineHeight: 1,
+            borderRadius: '6px'
+          }}
+        >
+          Сбросить
+        </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={onCreateNote}
+          size="small"
+          disableElevation
+          sx={{
+            fontSize: '0.625rem',
+            padding: '1px 5px',
+            minHeight: '22px',
+            minWidth: 'auto',
+            lineHeight: 1,
+            borderRadius: '6px'
+          }}
+        >
+          Добавить заметку
+        </Button>
+      </div>
       <NoteList
         notes={filteredNotes}
         isLoading={isLoading}
         handleDelete={handleDelete}
-        handleUpdate={handleUpdate}
+        onNoteSelect={onNoteSelect}
+        selectedNote={selectedNote}
       />
     </div>
   );

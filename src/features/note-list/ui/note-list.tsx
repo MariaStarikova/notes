@@ -1,19 +1,20 @@
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
 import type { Note } from '@/entities/note/model/note-type';
 import { NoteItem } from '@/shared/ui/note-item';
-import ListItem from '@mui/material/ListItem';
 
 interface NoteListProps {
   notes: Note[];
   isLoading: boolean;
   handleDelete: (id: string) => void;
-  handleUpdate: (id: string) => void;
+  onNoteSelect: (note: Note | null, shouldFocus?: boolean) => void;
+  selectedNote: Note | null;
 }
 
 export function NoteList(props: NoteListProps) {
-  const { notes, isLoading, handleDelete, handleUpdate } = props;
+  const { notes, isLoading, handleDelete, onNoteSelect, selectedNote } = props;
 
   if (isLoading) return <p>Загрузка...</p>;
 
@@ -26,9 +27,9 @@ export function NoteList(props: NoteListProps) {
             <ListItem disablePadding key={note.id}>
               <NoteItem
                 note={note}
-                handleUpdate={handleUpdate}
                 handleDelete={handleDelete}
-                isLoading={isLoading}
+                onNoteSelect={onNoteSelect}
+                isSelected={selectedNote?.id === note.id}
               />
             </ListItem>
           ))}

@@ -1,5 +1,32 @@
 .home-page {
+  width: 100%;
+  margin-top: 60px;
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  justify-content: space-between;
+
+  &__sidebar {
+    min-width: 35vw;
+    border-right: 1px solid #e1e5e9;
+    overflow-y: auto;
+  }
+
+  &__workspace {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__hello {
+    @extend %flex-columns;
+    height: calc(100vh - 60px);
+    flex-grow: 2;
+  }
+
+  &__title {
+    max-width: 90%;
+  }
+
+  &__subtitle {
+    max-width: 60%;
+  }
 }
