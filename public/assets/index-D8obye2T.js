@@ -1,0 +1,1 @@
+import{j as n}from"./index-B2ZHoO6M.js";function o(){return n.jsxs("div",{className:"not-found",children:[n.jsx("h2",{children:"К сожалению, такой страницы не существует :("}),n.jsx("a",{href:"/",children:"Вернуться на главную"})]})}export{o as NotFound};

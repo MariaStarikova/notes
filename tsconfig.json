@@ -6,6 +6,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "typeRoots": ["./node_modules/@types", "./src/shared/config/types/types.d.ts"]
+    "typeRoots": ["./node_modules/@types", "./src/shared/config/types/types.d.ts"],
+    "types": ["vite-plugin-pwa/client"]
   }
 }
