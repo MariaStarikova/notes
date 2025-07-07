@@ -1,0 +1,1 @@
+import{j as e}from"./index-B2ZHoO6M.js";function i(){return e.jsxs("div",{className:"offline-page",children:[e.jsx("h3",{children:"Нет интернета"}),e.jsx("a",{href:"/",children:"Вернуться на главную"})]})}export{i as OfflinePage};

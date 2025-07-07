@@ -1,0 +1,1 @@
+import{j as r}from"./index-TAQbaRhE.js";function i(){return r.jsxs("div",{children:[r.jsx("h5",{children:"Нет интернета"}),r.jsx("a",{href:"/",children:"Вернуться на главную"})]})}export{i as OfflinePage};

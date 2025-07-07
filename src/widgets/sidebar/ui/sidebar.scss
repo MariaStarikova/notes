@@ -1,0 +1,13 @@
+.sidebar {
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+}
